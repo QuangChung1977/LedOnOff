@@ -7,19 +7,20 @@
 </head>
 <body>
   <h1>Điều khiển LED qua SMS</h1>
+  
+  <!-- Chỉnh số điện thoại ESP8266 ở đây -->
   <button onclick="sendSMS('LED ON')">Bật LED</button>
   <button onclick="sendSMS('LED OFF')">Tắt LED</button>
   <button onclick="sendSMS('LED STATUS')">Kiểm tra trạng thái LED</button>
 
-  <p id="status">Trạng thái LED sẽ được hiển thị ở đây.</p>
-
   <script>
     function sendSMS(command) {
-      alert("Hãy gửi tin nhắn '" + command + "' đến SIM của thiết bị để điều khiển hoặc kiểm tra trạng thái LED.");
+      const phoneNumber = "+84987654321"; // Thay số điện thoại của ESP8266 tại đây
+      const smsBody = encodeURIComponent(command);
+      const smsLink = `sms:${phoneNumber}?body=${smsBody}`;
       
-      if (command === "LED STATUS") {
-        document.getElementById("status").innerText = "Đang kiểm tra trạng thái LED...";
-      }
+      // Mở link SMS
+      window.location.href = smsLink;
     }
   </script>
 </body>
