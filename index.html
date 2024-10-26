@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điều khiển LED từ xa</title>
+</head>
+<body>
+  <h1>Điều khiển LED qua SMS</h1>
+  <button onclick="sendSMS('LED ON')">Bật LED</button>
+  <button onclick="sendSMS('LED OFF')">Tắt LED</button>
+  <button onclick="sendSMS('LED STATUS')">Kiểm tra trạng thái LED</button>
+
+  <p id="status">Trạng thái LED sẽ được hiển thị ở đây.</p>
+
+  <script>
+    function sendSMS(command) {
+      alert("Hãy gửi tin nhắn '" + command + "' đến SIM của thiết bị để điều khiển hoặc kiểm tra trạng thái LED.");
+      
+      if (command === "LED STATUS") {
+        document.getElementById("status").innerText = "Đang kiểm tra trạng thái LED...";
+      }
+    }
+  </script>
+</body>
+</html>
